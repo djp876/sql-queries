@@ -1,0 +1,68 @@
+PROGRAM-1:
+1.  Display the department names in the lower case but the initial must be in uppercase. 
+
+select initcap(dname) from dept1;
+
+2. Determine the ‘ename’, ‘job’, ‘sal’ rename the title as Job-sal the output must be Job-Sal as SMITH[CLERKRS.2000]
+
+select ename,'[',job,'-',sal,']' from employee;
+
+3.  Count the number of times S occurs in department names.
+
+select dname,length(dname)-length(replace(dname,'s') "occurances of s" from dept1;
+
+4.  Write a query to display the department name which does not contains any employees.
+
+select dname from dept1
+where deptno not in(select deptno from employee);
+
+5.  Write a query to display all employee details where employee was joined during the years 1980 to 1990 and in the 2nd week of a month
+
+select hiredate from employee
+where to_char (hiredate,'yyyy') between 1980 and 1990
+to_char(hiredate,'w')=2
+
+6.  Write an SQL statement to convert the current date to new date picture 
+ex: MONDAY  10th 2005 10:30.00 PM
+
+select to_char(sysdate,'Day DD YYYY HH12 M1 SS PM') from dual;
+
+7.  Write a query to display details of all employees who joined on last Monday of a month and whose experience is more than 20 months.
+
+ select months_between(sysdate,hiredate)>20 and to_char(hiredate,'D')=2 and hiredate between last_day(hiredate)-6 and
+last_day(hiredate);
+
+8.  Write a query to calculate the service of employees rounded to years.
+
+select round((sysdate-hiredate)/365) service 
+from employee
+
+9.  Write a query that will display all different job types.
+
+ select distinct job from employee
+
+10.  Write a query that will display list of employees and their salary and the comments as follows.
+ 	If the salary is more than 1500 then display “above target”
+      If the salary is equal to 1500 then display “on the target”
+      If the salary is less than 1500 then display “below the target”
+
+select ename,sal,case
+when sal>1500 then 'above target'
+when sal<1500 then 'below target'
+else 'on target'
+end  "target"
+from employee
+
+11. Display all employee names, employee number, department names & salary grades for all employees who are working in department 30.
+
+select ename,empno,dname,grade
+from e.deptno=d.deptno and sal between losal and hisal and d.deptno=30
+
+12. Display the time of day.
+
+select to_char(sysdate,'HH12:MI:SS')
+
+
+
+   
+ 
